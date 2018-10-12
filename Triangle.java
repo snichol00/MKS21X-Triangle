@@ -1,6 +1,8 @@
 public class Triangle{
-  private Point v1,v2,v3;
   private double x1,y1,x2,y2,x3,y3;
+  private Point v1 = new Point(x1, y1);
+  private Point v2 = new Point(x2, y2);
+  private Point v3 = new Point(x3, y3);
 
   public Triangle(Point A, Point B, Point C){
     v1=A;
@@ -9,12 +11,17 @@ public class Triangle{
   }
 
   public Triangle(double X1, double Y1, double X2, double Y2, double X3, double Y3){
-    x1=X1;
-    y1=Y1;
-    x2=X2;
-    y2=Y2;
-    x3=X3;
-    y3=Y3;
+    Point newA = new Point(X1,Y1);
+    Point newB = new Point(X2,Y2);
+    Point newC = new Point(X3,Y3);
+    v1=newA;
+    v2=newB;
+    v3=newC;
+    //y1=Y1;
+    //x2=X2;
+    //y2=Y2;
+    //x3=X3;
+    //y3=Y3;
   }
 
   public double getPerimeter(){

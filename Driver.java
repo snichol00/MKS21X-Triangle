@@ -1,34 +1,39 @@
-//driver class
 public class Driver{
 
-  /* more methods can go here*/
+  public static double distance(Point a, Point b){
+    return Math.sqrt(Math.pow(a.getX()-b.getX(),2)+Math.pow(a.getY()-b.getY(),2));
+  }
+
   public static void main(String[]args){
-    Point P1 = new Point(1,1);
-    Point P2 = new Point(2,2);
-    //for the 3 distance functions below Determine:
-    //a)static/non-static
-    //b)what class the method is located in
-    //System.out.println(  distance(P1,P2)); //static in the demo class
+    Point p1 = new Point(1,1);
+    Point p2 = new Point(2,2);
+    System.out.println("Testing the distance 3 ways, should all be sqrt(2)");
+    System.out.println(  distance(p1,p2)); //static in the Driver class
+    System.out.println(  Point.distance(p1,p2)); //static in the Point class
+    System.out.println(  p1.distanceTo(p2)); //non-static in the Point class.
 
-    System.out.println(  Point.distance(P1,P2)); //static in the Point class
+    System.out.println("\nTesting 2 identical traingles, perimeter is 2+sqrt(2)");
+    Triangle t1 = new Triangle(0,0,0,1,1,0);
+    Triangle t2 = new Triangle(new Point(0,0),new Point(0,1),new Point(1,0));
+    System.out.println( t1 );
+    System.out.println( t1.getPerimeter() );
+    System.out.println( t2 );
+    System.out.println( t2.getPerimeter() );
 
-    System.out.println(  P1.distanceTo(P2)); //non-static in the Point class.
-    //It is IMPLIED strongly that this is non static because you need info from P1 to calculate the distance
-    //You cannot tell by the calling style alone, this is why we prefer to use CLASS.Method() for static calls.
-    Point test1 = new Point(3,5);
-    Point test2 = new Point(3,1);
-    Point test3 = new Point(7,1);
-    Triangle abc = new Triangle(test1, test2, test3); // Initializes a 3-4-5 triangle
+    System.out.println("\nTesting a 3/4/5 triangle");
+    t1 = new Triangle(-1,-1, 2,3, 2,-1);
+    System.out.println( t1 );
+    System.out.println( t1.getPerimeter() );
 
-    System.out.println(abc); //should print triangle in format specified on website
-    System.out.println("\nPerimeter: " + abc.getPerimeter()); //should be 13.6
+    System.out.println("\nTesting getVertex in the 3/4/5 triangle");
+    System.out.println( t1.getVertex(0) );
+    System.out.println( t1.getVertex(1) );
+    System.out.println( t1.getVertex(2) );
 
-    System.out.println("\nVertices: " + abc.getVertex(0) + ", " + abc.getVertex(1) + ", " + abc.getVertex(2)); //should print individual vertices
-
-    abc.setVertex(0, new Point(7, 10)); //sets point at the origin to (1,1)
-
-    System.out.println("\nVertex A moved to " + abc.getVertex(0)); //should show new value as (1,1)
-
-    System.out.println("New Perimeter: " + abc.getPerimeter()); //should be 22.8
+    System.out.println("\nTesting setPoint in the 3/4/5 triangle");
+    t1.setVertex(0,new Point(9,9));
+    t1.setVertex(1,new Point(-9,9));
+    t1.setVertex(2,new Point(9,-9));
+    System.out.println( t1 );
   }
  }
